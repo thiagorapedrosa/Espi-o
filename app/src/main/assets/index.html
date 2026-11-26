@@ -26,7 +26,7 @@ body::before{content:"";position:fixed;left:50%;top:30%;width:220vmax;height:220
 .app{max-width:520px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding:max(14px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom))}
 h1,h2,.big{font-weight:800;line-height:1;margin:0;text-wrap:balance}
 .t3d{color:#fff;text-shadow:0 1px 0 #d6ecff,0 2px 0 #b3d8ff,0 3px 0 #8cc0ff,0 4px 0 #5f9dff,0 5px 0 #3b7bf0,0 6px 0 var(--deep),0 12px 16px #0a2a7a80}
-h1{font-size:clamp(56px,16vw,78px);text-align:center;letter-spacing:1px}
+h1{font-size:clamp(46px,8vh,72px);text-align:center;letter-spacing:1px}
 p{margin:6px 0}.mute{color:var(--mute)}.small{font-size:15px}.center{text-align:center}
 .grow{flex:1}
 .top{display:flex;align-items:center;gap:12px;margin-bottom:14px;min-height:52px}
@@ -41,7 +41,20 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,#cover:focus-vis
 .white{--t:#fff;--b:#e4eeff;--e:#a6bfec;--tx:var(--ink);text-shadow:none}
 .icon{width:52px;min-height:52px;padding:0;border-radius:18px;flex:none;font-size:28px}
 .row{display:flex;gap:10px}.row>*{flex:1}
+.row>button{white-space:nowrap;padding-inline:8px;font-size:clamp(17px,5vw,21px)}
 .stack>*+*{margin-top:14px}
+.intro{margin:12px 0 14px;padding:12px 14px}.intro p{margin:0;font-size:16px}
+.board{padding:10px 14px 12px}.board .label{font-size:18px;margin-bottom:6px}
+.mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px}
+.mini div{display:flex;align-items:center;gap:6px;font-weight:700;font-size:15px}
+.mini span:not(.av){flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mini b{font-size:20px}.mini .av{width:34px;height:34px;border-width:2px}
+.impbox{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;margin-bottom:14px}
+.impbox .stepper{gap:8px}.impbox .stepper b{font-size:30px}.impbox .stepper button{width:46px;min-height:46px;font-size:26px}
+.av.m{width:100px;height:100px;border-width:5px}
+.whoBox.tight{margin:-8px 0 10px}.whoBox.tight .name3d{font-size:clamp(34px,10vw,44px);margin-top:4px}
+.endcard{position:relative!important;inset:auto!important;flex:none;justify-content:center!important;padding:18px 14px!important;margin-bottom:18px}
+.endcard .pic{--s:clamp(110px,20vh,170px)}
 .panel{background:linear-gradient(#fff,#eef5ff);border-radius:28px;box-shadow:0 7px 0 #1a4fc480,0 16px 30px #0a2a7a50;padding:16px;margin-bottom:18px}
 .label{font-weight:800;font-size:21px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
 .label button{width:auto;min-height:44px;font-size:16px;padding:2px 14px 0;border-radius:14px;box-shadow:inset 0 2px 0 #fff,0 4px 0 var(--e)}
@@ -50,12 +63,13 @@ input[type=text],textarea{width:100%;font:600 18px "Baloo 2",sans-serif;color:va
 textarea{min-height:100px;resize:vertical}
 .e3d{width:var(--s,40px);height:var(--s,40px);object-fit:contain;display:inline-block;vertical-align:middle;-webkit-user-drag:none;user-select:none}
 .etx{font-size:calc(var(--s,40px) * .8);line-height:1;display:inline-grid;place-items:center;width:var(--s,40px);height:var(--s,40px)}
-.player{display:flex;gap:8px;margin-bottom:10px;align-items:center}
-.player input{flex:1;min-height:58px}
+.player{display:flex;gap:8px;margin-bottom:8px;align-items:center}
+.player input{flex:1;min-height:50px}
 .av{--s:78%;display:grid;place-items:center;border-radius:50%;width:60px;height:60px;flex:none;border:4px solid #fff;
   background:radial-gradient(circle at 35% 30%,#fff 0,var(--c1) 30%,var(--c2) 100%);box-shadow:0 5px 0 #1a4fc455,0 8px 14px #0a2a7a40}
 .av>*{width:78%;height:78%}
-button.av{min-height:60px;padding:0}
+button.av{min-height:52px;width:52px;height:52px;padding:0;border-width:3px}
+.player .icon{width:48px;min-height:48px}
 .av.xl{width:138px;height:138px;border-width:6px}
 .av.l{width:76px;height:76px}
 .av.s{width:44px;height:44px;border-width:3px}
@@ -74,9 +88,9 @@ button.av{min-height:60px;padding:0}
 .switch input::after{content:"";position:absolute;top:3px;left:3px;width:30px;height:30px;border-radius:50%;background:linear-gradient(#fff,#e3ebfa);box-shadow:0 3px 4px #0003;transition:.2s}
 .switch input:checked{background:linear-gradient(#5be38a,#1fc25a)}.switch input:checked::after{left:31px}
 /* capa */
-.hero{position:relative;height:clamp(220px,58vw,280px);display:grid;place-items:center}
-.hero .main{--s:clamp(150px,44vw,200px);filter:drop-shadow(0 16px 18px #0a2a7a70);animation:bob 3s ease-in-out infinite}
-.hero .orb{position:absolute;--s:clamp(46px,13vw,62px);filter:drop-shadow(0 8px 8px #0a2a7a50);animation:bob 3.4s ease-in-out infinite}
+.hero{position:relative;height:clamp(150px,24vh,250px);display:grid;place-items:center}
+.hero .main{--s:clamp(110px,18vh,190px);filter:drop-shadow(0 16px 18px #0a2a7a70);animation:bob 3s ease-in-out infinite}
+.hero .orb{position:absolute;--s:clamp(38px,6vh,58px);filter:drop-shadow(0 8px 8px #0a2a7a50);animation:bob 3.4s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(-10px) rotate(-4deg)}}
 /* cartão de quem joga */
 .whoBox{position:relative;display:flex;flex-direction:column;align-items:center;margin:-4px 0 12px}
@@ -86,12 +100,12 @@ button.av{min-height:60px;padding:0}
 .name3d{position:relative;font-size:clamp(40px,12vw,54px);font-weight:800;line-height:1;margin-top:8px;overflow-wrap:anywhere;text-align:center}
 .card{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-radius:30px;padding:24px 18px;margin:4px 0 20px;min-height:300px;position:relative;overflow:hidden;
   background:linear-gradient(#fff,#eef5ff);box-shadow:0 8px 0 #1a4fc480,0 18px 30px #0a2a7a50}
-.talk{position:relative;overflow:hidden;flex:1;min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;border-radius:30px;padding:22px 16px;margin:4px 0 20px;color:#fff;
+.talk{position:relative;overflow:hidden;flex:1;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;border-radius:30px;padding:22px 16px;margin:4px 0 20px;color:#fff;
   background:radial-gradient(circle at 50% 35%,#b9ffe9 0,#0000 45%),linear-gradient(165deg,#36e6a8,#0ea47a);box-shadow:0 8px 0 #0b7a5b,0 18px 30px #0a2a7a50}
 .talk>*{position:relative}
 .rays{position:absolute!important;left:50%;top:40%;width:900px;height:900px;margin:-450px 0 0 -450px;background:repeating-conic-gradient(#ffffff40 0 10deg,#fff0 10deg 22deg);animation:spin 18s linear infinite;pointer-events:none}
-.bub{--s:clamp(110px,32vw,140px);filter:drop-shadow(0 12px 12px #0004);animation:bob 2.6s ease-in-out infinite}
-.say{font-size:21px;font-weight:800;line-height:1.2;text-shadow:0 2px 0 #0b7a5b;max-width:320px}
+.bub{--s:clamp(70px,12vh,120px);filter:drop-shadow(0 12px 12px #0004);animation:bob 2.6s ease-in-out infinite}
+.say{font-size:clamp(17px,2.6vh,21px);font-weight:800;line-height:1.2;text-shadow:0 2px 0 #0b7a5b;max-width:320px}
 .order{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px;background:#ffffff40;border-radius:999px;padding:6px 10px;margin-top:8px}
 .arr{font-weight:800;font-size:22px;color:#fff;text-shadow:0 2px 0 #0b7a5b}
 .talk .timer{color:#fff}
@@ -106,7 +120,7 @@ button.av{min-height:60px;padding:0}
 .num{font-size:110px;font-weight:800;line-height:1;color:var(--ink);padding-top:10px}
 .bump{animation:bump .4s cubic-bezier(.3,1.6,.5,1)}
 @keyframes bump{from{transform:scale(.3);opacity:0}}
-.timer{font-size:clamp(72px,24vw,108px);font-weight:800;font-variant-numeric:tabular-nums;line-height:1;margin-top:10px;color:var(--ink)}
+.timer{font-size:clamp(54px,10vh,84px);font-weight:800;font-variant-numeric:tabular-nums;line-height:1;margin-top:10px;color:var(--ink)}
 .timer.end{color:#ff4d4d}
 /* carta de espiar */
 .peek{position:relative;flex:1;min-height:340px;margin:0 0 20px;perspective:2200px}
@@ -139,8 +153,10 @@ button.av{min-height:60px;padding:0}
 .score td{padding:6px 4px;border-bottom:2px dashed #d3e1fb;font-weight:700}
 .score td:first-child{width:56px}
 .score td:last-child{text-align:right;font-size:28px;font-weight:800}
-.mix{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px;width:100%;margin-top:8px}
-.mix div{background:#ffffffc0;border-radius:18px;padding:8px 4px;display:flex;flex-direction:column;align-items:center;font-weight:800;font-size:15px;color:var(--ink);--s:48px}
+.mix{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px;width:100%;margin-top:8px}
+.mix div{background:#ffffffc0;border-radius:16px;padding:6px 4px;display:flex;flex-direction:column;align-items:center;font-weight:800;font-size:14px;line-height:1.15;color:var(--ink);--s:38px}
+.mix .av.s{width:34px;height:34px}
+.endcard .pic.sm{--s:clamp(80px,13vh,130px)}
 .err{color:#fff;background:#ff4d4dd0;border-radius:12px;font-weight:800;padding:0 10px}.err:empty{display:none}
 .err{margin-bottom:10px;padding-top:4px}
 .modal{position:fixed;inset:0;background:#0b1b4dc0;display:grid;place-items:center;padding:16px;z-index:5;backdrop-filter:blur(3px)}
@@ -246,11 +262,11 @@ function home() {
   show("home", `
     <div class="hero">${orbs.map(([e, l, t, d]) => `<span class="orb" style="left:${l};top:${t};animation-delay:${d}">${ico(e)}</span>`).join("")}${ico("🥸", "main")}</div>
     <h1 class="t3d">Disfarce</h1>
-    <div class="panel center" style="margin-top:18px"><p>Todo mundo vê a mesma figura secreta.<br><b>Menos o impostor!</b> Será que você descobre quem é?</p></div>
-    ${names.length ? `<div class="panel"><div class="label">Placar <button class="white" data-a="reset">Zerar</button></div>
-      <table class="score">${names.slice(0, 8).map(n => `<tr><td>${avatar(known(n), "s")}</td><td>${esc(n)}</td><td>${scores[n]}</td></tr>`).join("")}</table></div>` : ""}
+    <div class="panel center intro"><p>Todo mundo vê a mesma figura secreta.<br><b>Menos o impostor!</b> Será que você descobre quem é?</p></div>
+    ${names.length ? `<div class="panel board"><div class="label">Placar <button class="white" data-a="reset">Zerar</button></div>
+      <div class="mini">${names.slice(0, 6).map(n => `<div>${avatar(known(n), "s")}<span>${esc(n)}</span><b>${scores[n]}</b></div>`).join("")}</div></div>` : ""}
     <div class="grow"></div>
-    <div class="stack"><button class="go" data-a="setup">Jogar!</button><button class="white" data-a="rules">Como jogar</button></div>`);
+    <div class="row"><button class="white" data-a="rules">Como jogar</button><button class="go" data-a="setup">Jogar!</button></div>`);
 }
 
 // Tela 1: quem vai jogar e quantos impostores
@@ -261,10 +277,9 @@ function setup() {
       <p class="mute small" style="margin-top:-6px">Toque na figura para escolher outra.</p>
       ${cfg.players.map((p, i) => `<div class="player"><button class="av" style="${avStyle(p.a)}" data-a="av" data-i="${i}" aria-label="Escolher figura de ${esc(p.n)}">${ico(AV[p.a % AV.length])}</button>
         <input type="text" maxlength="16" value="${esc(p.n)}" data-p="${i}" aria-label="Nome do jogador ${i + 1}"><button class="icon white" data-a="delp" data-i="${i}" aria-label="Remover">✕</button></div>`).join("")}
-      <button class="white" data-a="addp" style="min-height:54px;font-size:18px;margin-top:4px">+ Mais um jogador</button></div>
-    <div class="panel"><div class="label">Quantos impostores?
+      <button class="white" data-a="addp" style="min-height:48px;font-size:18px;margin-top:2px">+ Mais um jogador</button></div>
+    <div class="panel impbox"><span><b>Impostores</b><br><span class="mute small">Até 5 pessoas, use 1</span></span>
       <div class="stepper"><button class="white" data-a="imp-" aria-label="Menos">−</button><b>${cfg.imps}</b><button class="white" data-a="imp+" aria-label="Mais">+</button></div></div>
-      <p class="mute small">Com até 5 pessoas, use 1.</p></div>
     <div class="grow"></div>
     <div class="err" id="err"></div>
     <button class="go" data-a="next1">Próximo</button>`);
@@ -291,15 +306,15 @@ function options() {
   const cats = allCats(), n = Object.keys(cats).filter(c => cfg.cats.includes(c)).length;
   show("options", `
     <div class="top"><button class="icon white" data-a="setup" aria-label="Voltar">‹</button><h2>Como vai ser?</h2></div>
-    <div class="panel">
-      <label class="switch"><span><b>Mostrar a categoria</b><br><span class="mute small">O impostor vê de qual categoria é a figura</span></span><input type="checkbox" id="hint" ${cfg.hint ? "checked" : ""}></label>
-      <label class="switch"><span><b>Dica para o impostor</b><br><span class="mute small">Uma pista fácil, ex.: “Corre muito rápido”</span></span><input type="checkbox" id="clue" ${cfg.clue ? "checked" : ""}></label>
-      <label class="switch"><span><b>Rodada maluca</b><br><span class="mute small">De vez em quando, todos são impostores e cada um recebe uma figura diferente</span></span><input type="checkbox" id="crazy" ${cfg.crazy ? "checked" : ""}></label>
-      <div class="label" style="margin:14px 0 8px">Relógio da conversa</div>
-      <div class="chips">${[[0,"Sem relógio"],[120,"2 min"],[180,"3 min"],[300,"5 min"]].map(([s, l]) => `<button class="chip ${cfg.time === s ? "go" : "white"}" data-a="time" data-s="${s}">${l}</button>`).join("")}</div></div>
     <div class="panel"><div class="label"><span>Categorias <span class="count" id="cc">${n} de ${Object.keys(cats).length}</span></span><button class="white" data-a="newcat">+ Criar</button></div>
       <div class="row" style="margin-bottom:14px"><button class="white chip" data-a="all">Marcar todas</button><button class="white chip" data-a="none">Limpar</button></div>
       <div class="tiles">${Object.keys(cats).map(c => `<button class="tile ${cfg.cats.includes(c) ? "on" : ""}" data-a="cat" data-c="${esc(c)}" aria-pressed="${cfg.cats.includes(c)}">${ico(cats[c].icon)}${esc(c)}</button>`).join("")}</div></div>
+    <div class="panel">
+      <label class="switch"><span><b>Mostrar a categoria</b><br><span class="mute small">O impostor vê de qual categoria é a figura</span></span><input type="checkbox" id="hint" ${cfg.hint ? "checked" : ""}></label>
+      <label class="switch"><span><b>Dica para o impostor</b><br><span class="mute small">Uma pista sobre a figura, ex.: “Usa estetoscópio”</span></span><input type="checkbox" id="clue" ${cfg.clue ? "checked" : ""}></label>
+      <label class="switch"><span><b>Rodada maluca</b><br><span class="mute small">De vez em quando, todos são impostores e cada um recebe uma figura diferente</span></span><input type="checkbox" id="crazy" ${cfg.crazy ? "checked" : ""}></label>
+      <div class="label" style="margin:14px 0 8px">Relógio da conversa</div>
+      <div class="chips">${[[0,"Sem relógio"],[120,"2 min"],[180,"3 min"],[300,"5 min"]].map(([s, l]) => `<button class="chip ${cfg.time === s ? "go" : "white"}" data-a="time" data-s="${s}">${l}</button>`).join("")}</div></div>
     <div class="err" id="err"></div>
     <button class="go" data-a="start">Distribuir as cartas</button>`);
 }
@@ -403,13 +418,13 @@ function discuss() {
   const fmt = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
   show("discuss", `
     <div class="top"><button class="icon white" data-a="back" aria-label="Voltar">‹</button><h2>Hora das dicas</h2></div>
-    <div class="whoBox"><div class="burst"></div><p style="color:#fff;font-weight:800;position:relative;text-shadow:0 2px 0 var(--deep)">Quem começa</p>${avatar(first, "xl")}<div class="name3d t3d">${esc(first.n)}</div>
-      <p style="color:#fff;font-weight:700;position:relative;text-shadow:0 2px 0 var(--deep)">e depois segue ${dir}</p></div>
+    <div class="whoBox tight"><div class="burst"></div><p style="color:#fff;font-weight:800;position:relative;text-shadow:0 2px 0 var(--deep);margin:0">Quem começa</p>${avatar(first, "m")}<div class="name3d t3d">${esc(first.n)}</div>
+      <p style="color:#fff;font-weight:700;position:relative;text-shadow:0 2px 0 var(--deep);margin:2px 0 0">e depois segue ${dir}</p></div>
     <div class="talk"><div class="rays"></div>
       ${cfg.time ? `<div class="timer t3d" id="tm">${fmt(left)}</div>` : `<span class="bub">${ico("💬")}</span>`}
       <p class="say">Cada um fala uma coisa sobre a figura, sem dizer o nome dela!</p>
       <div class="order">${order.map((p, j) => `${j ? `<span class="arr">›</span>` : ""}${avatar(p, "s")}`).join("")}</div></div>
-    <div class="stack">${cfg.time ? `<button class="white" data-a="pause" id="pz">Pausar</button>` : ""}<button class="hot" data-a="vote">Hora de votar!</button></div>`);
+    <div class="row">${cfg.time ? `<button class="white" data-a="pause" id="pz">Pausar</button>` : ""}<button class="hot" data-a="vote">Hora de votar!</button></div>`);
   if (cfg.time) {
     let paused = false;
     G.pause = () => { paused = !paused; $("#pz").textContent = paused ? "Continuar" : "Pausar"; };
@@ -486,24 +501,24 @@ function finish(who, msg) {
   const win = who === "crew";
   show("end", `
     <div class="top"><h2>${win ? "A turma venceu!" : "O impostor venceu!"}</h2></div>
-    <div class="under word pop" style="position:relative;inset:auto;flex:none;justify-content:center;padding:22px 14px;margin-bottom:22px">
+    <div class="under word pop endcard">
       <p style="font-weight:800;font-size:20px">${esc(msg)}</p>
       <p class="small" style="font-weight:700">A figura secreta era</p>${ico(G.pic, "pic")}<div class="big">${esc(G.word)}</div>
       <p style="margin-top:12px;font-weight:700">${G.imps.length > 1 ? "Impostores" : "Impostor"}:</p>
       <div class="row" style="justify-content:center;flex-wrap:wrap">${G.imps.map(n => `<div style="flex:none;display:flex;flex-direction:column;align-items:center">${avatar(byName(n), "l")}<b>${esc(n)}</b></div>`).join("")}</div></div>
-    ${scoreTable()}
-    <div class="stack"><button class="go" data-a="again">Jogar de novo</button><button class="white" data-a="home">Menu</button></div>`);
+    <div class="grow"></div>
+    <div class="row"><button class="white" data-a="home">Menu</button><button class="go" data-a="again">Jogar de novo</button></div>`);
 }
 
 function finishCrazy() {
   show("end", `
     <div class="top"><h2>Rodada maluca!</h2></div>
-    <div class="under imp pop" style="position:relative;inset:auto;flex:none;justify-content:center;padding:22px 14px;margin-bottom:22px">
-      ${ico("🤪", "pic")}<div class="big">Todo mundo era impostor!</div>
+    <div class="under imp pop endcard">
+      ${ico("🤪", "pic sm")}<div class="big" style="font-size:clamp(30px,9vw,44px)">Todo mundo era impostor!</div>
       <p style="font-weight:700">Cada um tinha uma figura diferente:</p>
       <div class="mix">${G.players.map(p => `<div>${avatar(p, "s")}${ico(G.own[p.n].pic)}${esc(G.own[p.n].word)}<span class="mute small">${esc(p.n)}</span></div>`).join("")}</div></div>
-    ${scoreTable()}
-    <div class="stack"><button class="go" data-a="again">Jogar de novo</button><button class="white" data-a="home">Menu</button></div>`);
+    <div class="grow"></div>
+    <div class="row"><button class="white" data-a="home">Menu</button><button class="go" data-a="again">Jogar de novo</button></div>`);
 }
 
 function scoreTable() {
